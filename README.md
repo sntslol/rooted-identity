@@ -2,7 +2,7 @@
 
 **Identity that outlives its keys.** An illustrated whitepaper site and educational model for Bitcoin-anchored key succession, recovery, and revocation.
 
-Original idea: **Michael Tidwell**, from a supplied brainstorming sketch. This repository's technical formulation is a research proposal pending his review. “Rooted” is a working title; no novelty claim is made.
+Idea and concept: **Michael Tidwell**. Rooted is entirely his idea. This site and whitepaper are prepared for Michael to explain his Bitcoin-anchored identity proposal, illustrate the design, and examine its technical foundations. “Rooted” is a working title; no novelty claim is made.
 
 - [Read the site](https://rooted-identity.vercel.app)
 - [Whitepaper](docs/whitepaper.md) · [PDF edition](public/rooted-whitepaper.pdf)

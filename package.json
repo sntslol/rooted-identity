@@ -2,7 +2,7 @@
   "name": "rooted-identity",
   "version": "0.1.0",
   "private": true,
-  "description": "An illustrated research proposal for Bitcoin-anchored identity and key continuity, from an idea by Michael Tidwell.",
+  "description": "Michael Tidwell’s Bitcoin-anchored identity concept: illustrated whitepaper, technical review, and key continuity model.",
   "type": "module",
   "scripts": {
     "dev": "next dev --hostname 127.0.0.1 --port 3016",

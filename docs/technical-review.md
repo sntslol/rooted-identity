@@ -2,7 +2,7 @@
 
 Version 0.1 · October 19, 2026
 
-Scope: review of a supplied brainstorming sketch against primary specifications. This is not an independent security audit. No mainnet transaction or node-backed resolver has been implemented or tested. Verdicts distinguish supported building blocks, qualified claims, corrected assumptions, and open implementation work.
+Scope: review of Michael Tidwell’s Bitcoin-anchored identity proposal against primary specifications. This is not an independent security audit. No mainnet transaction or node-backed resolver has been implemented or tested. Verdicts distinguish supported building blocks, qualified claims, corrected assumptions, and open implementation work.
 
 ## 1. Anchor a key to a Bitcoin output
 
@@ -100,8 +100,8 @@ Scope: review of a supplied brainstorming sketch against primary specifications.
 
 See the regtest roadmap in the whitepaper.
 
-## Editorial provenance
+## Concept attribution
 
-Original concept: Michael Tidwell, as attributed in the supplied notes. The stable genesis, OP_RETURN mapping, Taproot control output, NUMS internal key, guardian policies, and use-case-first approach come from those notes. The working name Rooted, fixed-width record, fail-closed resolver profile, illustrative fee model, and implementation roadmap are editorial formulations. Michael has not been represented as approving this text.
+Rooted is entirely Michael Tidwell’s idea. This whitepaper, its diagrams, and the accompanying technical review are prepared for Michael to explain his proposal and examine its Bitcoin and Taproot assumptions. Credit for the idea and concept belongs entirely to Michael Tidwell.
 
 Reviewed sources are linked inline. Specifications and draft identity methods can evolve; the date above identifies this review, not a promise that upstream documents will remain unchanged.

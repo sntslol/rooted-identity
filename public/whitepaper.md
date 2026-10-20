@@ -4,7 +4,7 @@ A Bitcoin-anchored model for key continuity, recovery, and revocation.
 
 **Version 0.1 · Research draft · October 19, 2026**
 
-**Original idea: Michael Tidwell.** This paper develops a supplied brainstorming sketch into a proposed design. The encoding, resolver rules, examples, and technical review are editorial proposals, not claims that Michael has reviewed or approved them. “Rooted” is a working title. No novelty or standards-compliance claim is made.
+**Idea and concept: Michael Tidwell.** Rooted is entirely Michael Tidwell’s idea. This whitepaper presents his proposal for Bitcoin-anchored identity, key continuity, recovery, and revocation, with diagrams and a review of its technical foundations. “Rooted” is a working title. No novelty or standards-compliance claim is made.
 
 ## Abstract
 
