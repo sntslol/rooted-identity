@@ -1,0 +1,36 @@
+export const references = [
+  { id: 'bip341', title: 'BIP 341', subtitle: 'Taproot spending rules, NUMS internal keys, script-path disclosure', url: 'https://bips.dev/341/' },
+  { id: 'bip342', title: 'BIP 342', subtitle: 'Tapscript, CHECKSIGADD, signature and execution limits', url: 'https://bips.dev/342/' },
+  { id: 'bip340', title: 'BIP 340', subtitle: 'Schnorr signatures, x-only keys, domain separation', url: 'https://bips.dev/340/' },
+  { id: 'bip141', title: 'BIP 141', subtitle: 'SegWit transaction IDs and witness commitments', url: 'https://bips.dev/141/' },
+  { id: 'timelocks', title: 'BIPs 65 / 68 / 112', subtitle: 'Absolute and relative spending constraints', url: 'https://bips.dev/112/' },
+  { id: 'core30', title: 'Bitcoin Core 30.0', subtitle: 'OP_RETURN relay-policy changes; policy versus consensus', url: 'https://bitcoincore.org/en/releases/30.0/' },
+  { id: 'nip01', title: 'NIP-01', subtitle: 'Nostr public keys and signed events', url: 'https://github.com/nostr-protocol/nips/blob/master/01.md' },
+  { id: 'nip05', title: 'NIP-05', subtitle: 'Internet identifier mapping and client follow behavior', url: 'https://github.com/nostr-protocol/nips/blob/master/05.md' },
+  { id: 'bip327', title: 'BIP 327', subtitle: 'MuSig2 n-of-n signing and protocol requirements', url: 'https://bips.dev/327/' },
+  { id: 'descriptor', title: 'BIP 386', subtitle: 'Taproot output script descriptors', url: 'https://bips.dev/386/' },
+  { id: 'did', title: 'DID Core', subtitle: 'Identifiers, controllers, and verification methods', url: 'https://www.w3.org/TR/did/' },
+  { id: 'sidetree', title: 'Sidetree', subtitle: 'Prior work on ledger-anchored identity and updates', url: 'https://identity.foundation/sidetree/spec/' },
+  { id: 'btcr2', title: 'did:btcr2', subtitle: 'Prior work on Bitcoin-anchored decentralized identifiers', url: 'https://github.com/dcdpr/did-btcr2' },
+  { id: 'frost', title: 'RFC 9591', subtitle: 'Threshold signing, distinct from reconstructing a shared secret', url: 'https://www.rfc-editor.org/rfc/rfc9591.html' },
+];
+
+export type Verdict = 'Supported' | 'Qualified' | 'Corrected' | 'Open';
+export const review: { claim: string; verdict: Verdict; finding: string; sources: string[] }[] = [
+  { claim: 'Anchor a key to a Bitcoin output', verdict: 'Supported', finding: 'A transaction can bind a key and an output index in OP_RETURN. The proposed identity meaning is enforced by clients.', sources: ['bip341', 'core30'] },
+  { claim: 'Taproot enforces rotation and revocation', verdict: 'Corrected', finding: 'Taproot validates spending conditions. The proposed record and resolver define the action and successor. A Bitcoin-valid spend can end continuity.', sources: ['bip341', 'bip342'] },
+  { claim: 'A NUMS key forces a script reveal', verdict: 'Qualified', finding: 'A verifiably derived point with unknown discrete logarithm makes key-path use computationally unavailable. An address alone does not prove its construction.', sources: ['bip341'] },
+  { claim: 'Timelocks enable automatic rotation', verdict: 'Corrected', finding: 'Timelocks constrain eligibility. Someone must still construct, sign, fund, and broadcast a transaction.', sources: ['timelocks'] },
+  { claim: 'A delayed recovery branch provides a veto period', verdict: 'Corrected', finding: 'A simple relative lock runs from output confirmation, not from a later recovery request. Challenge-and-cancel recovery needs additional stages.', sources: ['timelocks'] },
+  { claim: 'Guardian recovery is a web of trust', verdict: 'Corrected', finding: 'Guardian keys have control authority. Social endorsement and reputation require separate signed assertions and application rules.', sources: ['bip342', 'did'] },
+  { claim: 'Recovery does not reveal which guardian signed', verdict: 'Qualified', finding: 'A revealed CHECKSIGADD leaf exposes its keys and signing slots. Hiding participants requires a separately analyzed aggregate or threshold construction.', sources: ['bip342', 'bip327', 'frost'] },
+  { claim: 'Shamir shares are threshold signing', verdict: 'Corrected', finding: 'Secret sharing alone reconstructs a secret. It does not supply distributed signature generation or its nonce-safety guarantees.', sources: ['frost'] },
+  { claim: 'An on-chain anchor is NIP-05', verdict: 'Corrected', finding: 'NIP-05 is a domain-to-key mapping. An anchor can complement discovery; existing Nostr clients do not inherit succession support.', sources: ['nip05', 'nip01'] },
+  { claim: 'Headers are enough; no indexing is needed', verdict: 'Corrected', finding: 'Resolvers need spends, records, and relevant witnesses. Inclusion does not prove latest state; witness authentication needs more than a txid Merkle branch.', sources: ['bip141'] },
+  { claim: 'Any public/private key can control the output', verdict: 'Qualified', finding: 'Taproot signature checks use BIP 340 secp256k1 keys. Version 1 application keys use the same format; other key types need an extension.', sources: ['bip340', 'bip342'] },
+  { claim: 'A bounty proves a key was compromised', verdict: 'Corrected', finding: 'A spend proves the spending conditions were satisfied, not that theft occurred. An attacker may keep a stolen key secret or use a valid rotation.', sources: ['bip341'] },
+  { claim: 'Recovery survives any malicious rotation', verdict: 'Corrected', finding: 'The successor policy can omit the old guardians. The baseline scripts do not enforce policy inheritance across outputs.', sources: ['bip341', 'bip342'] },
+  { claim: '80 bytes is an OP_RETURN consensus limit', verdict: 'Corrected', finding: 'That number described historical relay policy. Core 30.0 changed its defaults; deployment still depends on actual relay and mining policies.', sources: ['core30'] },
+  { claim: 'Continuity proves the same person', verdict: 'Corrected', finding: 'It proves authorized succession under a policy. Keys and control can be transferred; multiple identities can belong to one operator.', sources: ['did'] },
+  { claim: 'The design is ready for mainnet', verdict: 'Open', finding: 'A candidate record and educational model are provided. Regtest transactions, reviewed scripts, a real resolver, interoperability vectors, and independent review remain.', sources: [] },
+];

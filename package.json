@@ -1,0 +1,33 @@
+{
+  "name": "rooted-identity",
+  "version": "0.1.0",
+  "private": true,
+  "description": "An illustrated research proposal for Bitcoin-anchored identity and key continuity, from an idea by Michael Tidwell.",
+  "type": "module",
+  "scripts": {
+    "dev": "next dev --hostname 127.0.0.1 --port 3016",
+    "build": "node scripts/sync-paper.mjs && next build",
+    "start": "next start --hostname 127.0.0.1 --port 3016",
+    "typecheck": "tsc --noEmit",
+    "test": "node --import tsx --test tests/*.test.ts",
+    "export:paper": "node scripts/export-paper.mjs"
+  },
+  "dependencies": {
+    "next": "16.3.8",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "react-markdown": "10.1.0",
+    "remark-gfm": "4.0.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.58.2",
+    "@types/node": "26.6.4",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "tsx": "4.23.15",
+    "typescript": "5.9.3"
+  },
+  "engines": {
+    "node": ">=22.13.0"
+  }
+}
