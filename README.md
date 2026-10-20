@@ -42,7 +42,17 @@ npx playwright test
 
 ## PDF edition
 
-The checked-in PDF contains the paper, diagrams, technical review, and references. To regenerate after editorial or print-style changes, build and start the site, then run `npm run export:paper` in another terminal. Review the resulting PDF before committing `public/rooted-whitepaper.pdf`.
+The PDF is a separate academic edition: Times typography, a compact title and abstract, numbered sections and citations, monochrome vector figures, a bibliography, and a technical-review appendix. It is typeset directly from `docs/whitepaper.md` and `lib/review.ts`; no running website or browser is required.
+
+To regenerate with Python 3.10 or newer:
+
+```sh
+python3 -m venv .venv-pdf
+.venv-pdf/bin/python -m pip install -r scripts/requirements-pdf.txt
+PDF_PYTHON=.venv-pdf/bin/python npm run export:paper
+```
+
+The typesetter is `scripts/typeset-paper.py`. It preserves the technical proposal while using formal section titles, an academic abstract, and print-specific explanatory notation. Review `output/pdf/rooted-whitepaper.pdf` before committing the published copy at `public/rooted-whitepaper.pdf`.
 
 ## Design boundary
 

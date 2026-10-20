@@ -10,7 +10,7 @@
     "start": "next start --hostname 127.0.0.1 --port 3016",
     "typecheck": "tsc --noEmit",
     "test": "node --import tsx --test tests/*.test.ts",
-    "export:paper": "node scripts/export-paper.mjs"
+    "export:paper": "node --import tsx scripts/export-paper.mjs"
   },
   "dependencies": {
     "next": "16.3.8",

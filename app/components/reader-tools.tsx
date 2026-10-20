@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
-export function PrintButton() {
-  return <button type="button" className="text-button" onClick={() => window.print()}><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true"><path d="M6 8V3h12v5M6 17H3V8h18v9h-3M6 14h12v7H6z" /></svg>Print / save PDF</button>;
+export function PdfViewLink() {
+  return <a className="text-button" href="/rooted-whitepaper.pdf" target="_blank" rel="noreferrer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true"><path d="M6 8V3h12v5M6 17H3V8h18v9h-3M6 14h12v7H6z" /></svg>View PDF</a>;
 }
 export function Contents({ sections }: { sections: { id: string; short: string }[] }) {
   const [active, setActive] = useState(sections[0]?.id ?? '');
